@@ -1,4 +1,4 @@
-import { UrlDatabase } from '@app/types/url';
+import { UrlDatabase, ShortenedUrl } from '@app/types/url';
 import { saveUrl } from '@app/models/url';
 import { SHORT_URL_CHAR_SET } from '@app/constants';
 
@@ -19,7 +19,7 @@ export const encodeUrl = (longUrl: string): string => {
   return shortUrl;
 };
 
-export const listUrls = (): any[] => {
+export const listUrls = (): ShortenedUrl[] => {
   return Object.entries(urlDatabase).map(([shortUrl, { longUrl, createdAt, visits }]) => ({
     shortUrl,
     longUrl,

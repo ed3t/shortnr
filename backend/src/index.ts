@@ -12,6 +12,7 @@ import http from 'http';
 import https from 'https';
 import { config } from '@config/config';
 import { createServer } from '@config/express';
+import { logger } from '@config/logger';
 
 async function startServer() {
   const app = createServer();
@@ -24,22 +25,22 @@ async function startServer() {
 
     server = https.createServer(sslOptions, app).listen({ host: config.host, port: config.port }, () => {
       const addressInfo = server.address() as AddressInfo;
-      console.log(`https server ready at https://${addressInfo.address}:${addressInfo.port}`);
+      logger.info(`https server ready at https://${addressInfo.address}:${addressInfo.port}`);
     });
   } else {
     server = http.createServer(app).listen({ host: config.host, port: config.port }, () => {
       const addressInfo = server.address() as AddressInfo;
-      console.log(`http server ready at http://${addressInfo.address}:${addressInfo.port}`);
+      logger.info(`http server ready at http://${addressInfo.address}:${addressInfo.port}`);
     });
   }
 
   const signalTraps: NodeJS.Signals[] = ['SIGTERM', 'SIGINT', 'SIGUSR2'];
   signalTraps.forEach((type) => {
     process.once(type, async () => {
-      console.log(`process.once ${type}`);
+      logger.info(`process.once ${type}`);
 
       server.close(() => {
-        console.log('HTTP server closed');
+        logger.debug('HTTP server closed');
       });
     });
   });

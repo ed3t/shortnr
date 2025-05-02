@@ -3,13 +3,28 @@ import encodeRoute from '@app/routes/encode';
 import decodeRoute from '@app/routes/decode';
 import statsRoute from '@app/routes/statistic';
 import listRoute from '@app/routes/list';
+import rateLimit from 'express-rate-limit';
+import cors from 'cors';
 import { config } from '@config/config';
 import { AppError } from '@app/types/error';
 
 const createServer = (): Application => {
   const app = express();
 
+  const corsOptions = {
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  };
+
+  const limiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests.',
+  });
+
   // Middleware
+  app.use(cors(corsOptions));
+  app.use(limiter);
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
 

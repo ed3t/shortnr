@@ -1,4 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
+import encodeRoute from '@app/routes/encode';
 import { config } from '@config/config';
 import { AppError } from '@app/types/error';
 
@@ -10,6 +11,8 @@ const createServer = (): Application => {
   app.use(express.json());
 
   // Routes
+  app.use('/api/encode', encodeRoute);
+
   app.get('/api', (_req, res) => {
     res.send('Running! 🚀');
   });

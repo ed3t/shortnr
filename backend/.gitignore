@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+.env
+
+# misc
+.history
+.DS_Store
+*.html
+*.code-workspace
+.vscode
+.editorconfig

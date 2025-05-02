@@ -1,0 +1,9 @@
+node_modules
+build
+dist
+.env
+
+# misc
+.history
+.DS_Store
+*.code-workspace

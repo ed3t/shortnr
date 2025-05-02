@@ -1,0 +1,49 @@
+{
+  "name": "@shortnr/backend",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "ts-node -r tsconfig-paths/register -r dotenv/config src/index.ts",
+    "dev": "nodemon --config restart.json",
+    "clean": "rm -rf coverage build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.build.json",
+    "build:watch": "tsc -w -p tsconfig.build.json",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "module-alias": "^2.2.2",
+    "ts-node": "^10.2.0",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.6.2",
+    "tsutils": "^3.21.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^29.5.14",
+    "@types/node": "~22.15.3",
+    "@typescript-eslint/eslint-plugin": "~8.31.1",
+    "@typescript-eslint/parser": "~8.31.1",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-jest": "~28.11.0",
+    "jest": "^29.7.0",
+    "jest-html-reporter": "^4.1.0",
+    "nodemon": "^3.1.10",
+    "prettier": "~3.5.3",
+    "rimraf": "^6.0.1",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.2",
+    "typescript-eslint": "^8.31.1"
+  }
+}

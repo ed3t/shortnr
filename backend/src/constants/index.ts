@@ -1,0 +1,1 @@
+export const SHORT_URL_CHAR_SET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

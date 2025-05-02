@@ -1,5 +1,8 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import encodeRoute from '@app/routes/encode';
+import decodeRoute from '@app/routes/decode';
+import statsRoute from '@app/routes/statistic';
+import listRoute from '@app/routes/list';
 import { config } from '@config/config';
 import { AppError } from '@app/types/error';
 
@@ -12,6 +15,9 @@ const createServer = (): Application => {
 
   // Routes
   app.use('/api/encode', encodeRoute);
+  app.use('/api/decode', decodeRoute);
+  app.use('/api/statistic', statsRoute);
+  app.use('/api/list', listRoute);
 
   app.get('/api', (_req, res) => {
     res.send('Running! 🚀');

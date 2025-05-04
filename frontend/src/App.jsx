@@ -4,6 +4,7 @@ import AppStateProvider from "@app/containers/AppState";
 import Redirect from "@components/commons/Redirect";
 import NotFound from "@components/commons/NotFound";
 import Index from "@app/pages/home";
+import List from "@app/pages/list";
 
 const AppContainer = (props) => {
   return (
@@ -23,6 +24,7 @@ const AppContainer = (props) => {
         <Routes>
           <Route path="/" element={<Index {...props} />} />
           <Route path="/:shortUrl" element={<Redirect />} />
+          <Route path="/urls" element={<List />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

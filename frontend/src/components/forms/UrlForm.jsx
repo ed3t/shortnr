@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Lottie from "react-lottie";
 import { toast } from "react-hot-toast";
 
-import successAnimation from "@app/lotties/confetti";
+import successAnimation from "@app/assets/lotties/confetti";
 import { parseApiError } from "@utils/parseError";
 import { encodeUrl } from "@utils/api";
 import CopyIcon from "@components/icons/CopyIcon";
@@ -72,7 +72,7 @@ const UrlForm = () => {
         <input
           className="large-field"
           name="URL"
-          type="url"
+          type="text"
           placeholder="Enter a long URL"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
@@ -89,7 +89,7 @@ const UrlForm = () => {
       </form>
 
       {result && (
-        <div className="container margin-top">
+        <div className="container narrow margin-top">
         <div className="card">
           <div className="space-between">
             <div className="space-between-vertical hide-on-tablet">
@@ -97,12 +97,12 @@ const UrlForm = () => {
               <Lottie
                 style={{
                   margin: 0,
-                  position: "absolute",
-                  right: "15px",
-                  bottom: "130px",
+                  position: "relative",
+                  left: "18px",
+                  bottom: "5px",
                 }}
                 options={lottieOptions}
-                height={60}
+                height={35}
                 width={60}
               />
             </div>

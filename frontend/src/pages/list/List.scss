@@ -1,0 +1,204 @@
+$list-section-padding: 3rem;
+$shadow-border: #eeefef;
+$shadow-color: rgba(38, 38, 44, 0.07);
+$table-header-color: #d2d2d2;
+$text-light: #7f7f7f;
+
+.list-section {
+    padding: $list-section-padding;
+}
+
+.flex-table {
+    .flex-table-header {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+
+        span {
+            flex: 1 1 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: $table-header-color;
+            text-transform: uppercase;
+            padding: 0 10px 10px;
+
+            &.cell-end {
+                justify-content: flex-end;
+            }
+
+            &.is-grow {
+                flex-grow: 2;
+            }
+        }
+    }
+
+    .flex-table-item {
+        display: flex;
+        align-items: stretch;
+        min-height: 55px;
+        background: var(--white-smoke);
+        border-radius: 8px;
+        padding: 6px;
+        margin-bottom: 15px;
+        border: 1px solid var(--borders);
+
+        .flex-table-cell {
+            flex: 1 1 0;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 0.9em;
+
+            &.is-grow {
+                flex-grow: 2;
+            }
+
+            &.cell-end {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+.list-view-item {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 10px;
+    box-shadow:
+        inset 0 0 0 1px $shadow-border,
+        $shadow-color 0 1px 3px;
+}
+
+.placeload-wrap,
+.is-flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.content-shape-group {
+    width: 100%;
+    max-width: 100%;
+}
+
+.content-shape {
+    height: 10px;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0.25rem;
+}
+
+.loads {
+    animation: placeload 1s linear infinite forwards;
+    background: linear-gradient(to right,
+            #f8f8f9 8%,
+            #f5f5f5 18%,
+            #f8f8f9 33%);
+    background-size: 1200px 104px;
+    position: relative;
+}
+
+.light-text {
+    color: $text-light;
+}
+
+.control {
+    box-sizing: border-box;
+    clear: both;
+    position: relative;
+    margin-bottom: 25px;
+    text-align: inherit;
+
+    &.has-icon {
+        .input {
+            height: 25px;
+            border-radius: 50px !important;
+            border: 1.5px solid;
+            border-color: var(--borders);
+            transition: all 0.3s;
+
+            &:focus {
+                border-color: var(--blue);
+                outline: 0;
+            }
+        }
+
+        .form-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 44px;
+            width: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+                height: 16px;
+                width: 16px;
+                stroke: #cecece;
+                transition: all 0.3s;
+            }
+        }
+    }
+}
+
+.input {
+    &.search {
+        padding: 8px 42px;
+        padding-right: 8px;
+        width: 40%;
+    }
+}
+
+.empty-icon {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+@media (max-width: 767px) {
+    .flex-list-wrapper {
+        .control.has-icon {
+            width: 100%;
+        }
+    }
+
+    .flex-table {
+        .flex-table-header {
+            display: none;
+        }
+
+        .flex-table-item {
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .flex-table-cell {
+            position: relative;
+            margin-bottom: 12px;
+
+            &:before {
+                content: attr(data-th);
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                font-weight: 500;
+                color: #afafaf;
+            }
+
+            >span {
+                margin-left: auto;
+            }
+        }
+
+        >div {
+            border: none !important;
+        }
+    }
+}

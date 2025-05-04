@@ -3,6 +3,7 @@ export interface EncodeRequest {
 }
 
 export interface EncodeResponse {
+  longUrl: string;
   shortUrl: string;
 }
 

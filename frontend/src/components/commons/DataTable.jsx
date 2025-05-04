@@ -23,7 +23,7 @@ const DataTable = ({
     }
     const term = searchTerm.toLowerCase();
     return urlObjects.filter((item) =>
-      ["longUrl", "shortUrl"].some((field) =>
+      ["longUrl"].some((field) =>
         item[field]?.toString().toLowerCase().includes(term)
       )
     );

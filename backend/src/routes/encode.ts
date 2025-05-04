@@ -15,16 +15,17 @@ router.post('/', (req: Request, res: Response, next: NextFunction) => {
     return next(createError(400, "URL is required"));
   }
 
+  let normalizedUrl: string;
   try {
-    validateUrl(longUrl);
+    normalizedUrl = validateUrl(longUrl);
   } catch (error: any) {
     return next(createError(400, error.message));
   }
 
-  const shortUrl = encodeUrl(longUrl);
-  saveUrl(longUrl, shortUrl);
+  const shortUrl = encodeUrl(normalizedUrl);
+  saveUrl(normalizedUrl, shortUrl);
 
-  const response: EncodeResponse = { longUrl, shortUrl: `${config.frontendDomain}/${shortUrl}` };
+  const response: EncodeResponse = { longUrl: normalizedUrl, shortUrl: `${config.frontendDomain}/${shortUrl}` };
 
   return res.json(response);
 });

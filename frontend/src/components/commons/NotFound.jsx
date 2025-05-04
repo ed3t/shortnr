@@ -8,7 +8,7 @@ const NotFound = () => {
   };
 
   return (
-    <div className="section">
+    <div className="section index">
       <div className="text-container">
         <div className="margin-bottom large">
           <img src="/404.svg" alt="Page not found" />

@@ -8,6 +8,6 @@ export const parseApiError = (err) => {
       err?.response?.data?.error ||
       err?.response?.data?.message ||
       err?.message ||
-      'Something went wrong!'
+      'Something went wrong'
     );
 };

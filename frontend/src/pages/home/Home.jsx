@@ -4,7 +4,7 @@ import "./Home.scss";
 const Home = (props) => {
   return (
     <>
-      <div className="section">
+      <div className="section index">
         <div className="text-container center">
           {props.environment == "local" && (
             <a
@@ -21,14 +21,14 @@ const Home = (props) => {
           <h1 className="margin-bottom heading">
             <span>Shortnr</span> is a URL shortening service
           </h1>
-          <p className="paragraph large margin-bottom">
+          <p className="paragraph large margin-bottom none">
             Put in a really long URL, it returns a short one.
           </p>
-          <Form />
         </div>
+        <Form />
       </div>
     </>
   );
-}
+};
 
 export default Home;

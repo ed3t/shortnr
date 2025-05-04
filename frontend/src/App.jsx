@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import AppStateProvider from "@app/containers/AppState";
 import Redirect from "@components/commons/Redirect";
 import NotFound from "@components/commons/NotFound";
 import Index from "@app/pages/home";
@@ -32,7 +33,9 @@ const AppContainer = (props) => {
 function App(props) {
   props = { ...props, environment: import.meta.env.VITE_ENV };
   return (
-    <AppContainer {...props} />
+    <AppStateProvider>
+      <AppContainer {...props} />
+    </AppStateProvider>
   );
 }
 

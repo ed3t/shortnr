@@ -9,7 +9,7 @@ export default function ListItem({ urlObject }) {
   return (
     <div className="flex-table-item is-order">
       <div className="flex-table-cell is-grow" data-th="Long Url">
-        <span className="long-url is-list">{urlObject?.longUrl}</span>
+        <span className="long-url">{urlObject?.longUrl}</span>
       </div>
       <div className="flex-table-cell is-grow" data-th="Short Url">
         <span>

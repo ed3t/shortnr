@@ -2,12 +2,12 @@ import { UrlEntry, UrlDatabase, ShortenedUrl } from '@app/types/url';
 
 const urlDatabase: UrlDatabase = {};
 
-export const saveUrl = (longUrl: string, shortUrl: string): void => {
-  urlDatabase[shortUrl] = { longUrl, createdAt: new Date(), visits: 0 };
+export const saveUrl = (longUrl: string, shortUrlPath: string): void => {
+  urlDatabase[shortUrlPath] = { longUrl, createdAt: new Date(), visits: 0 };
 };
 
-export const getOriginalUrl = (shortUrl: string): string | null => {
-  const urlEntry: UrlEntry = urlDatabase[shortUrl];
+export const getOriginalUrl = (shortUrlPath: string): string | null => {
+  const urlEntry: UrlEntry = urlDatabase[shortUrlPath];
   if (urlEntry) {
     urlEntry.visits++;
     return urlEntry.longUrl;
@@ -15,11 +15,11 @@ export const getOriginalUrl = (shortUrl: string): string | null => {
   return null;
 };
 
-export const getUrlStat = (shortUrl: string): { shortUrl: string, longUrl: string, visits: number, createdAt: Date } | null => {
-  const urlEntry: UrlEntry = urlDatabase[shortUrl];
+export const getUrlStat = (shortUrlPath: string): { shortUrlPath: string, longUrl: string, visits: number, createdAt: Date } | null => {
+  const urlEntry: UrlEntry = urlDatabase[shortUrlPath];
   if (urlEntry) {
     return {
-      shortUrl,
+      shortUrlPath,
       longUrl: urlEntry.longUrl,
       visits: urlEntry.visits,
       createdAt: urlEntry.createdAt
@@ -29,8 +29,8 @@ export const getUrlStat = (shortUrl: string): { shortUrl: string, longUrl: strin
 };
 
 export const listUrls = (): ShortenedUrl[] => {
-  return Object.entries(urlDatabase).map(([shortUrl, { longUrl, createdAt, visits }]) => ({
-    shortUrl,
+  return Object.entries(urlDatabase).map(([shortUrlPath, { longUrl, createdAt, visits }]) => ({
+    shortUrlPath,
     longUrl,
     createdAt,
     visits

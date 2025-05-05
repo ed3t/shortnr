@@ -1,3 +1,3 @@
 export interface AppError extends Error {
-  status?: any;
+  status?: number;
 }

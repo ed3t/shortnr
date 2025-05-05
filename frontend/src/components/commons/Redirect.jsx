@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import NotFound from "@components/commons/NotFound";
 import { parseApiError } from "@utils/parseError";
-import { decodeUrl } from "@utils/api";
+import { apiDecode } from "@utils/api";
 
 const RedirectToLongUrl = () => {
-  const { shortUrl } = useParams();
+  const { urlPath } = useParams();
   const [error, setError] = useState(false);
 
   useEffect(() => {
     const redirect = async () => {
       try {
-        const res = await decodeUrl(shortUrl);
-        const { longUrl } = res.data;
+        const { longUrl } = await apiDecode(urlPath);
         window.location.href = longUrl;
       } catch (err) {
         console.log(parseApiError(err));
@@ -21,7 +20,7 @@ const RedirectToLongUrl = () => {
     };
 
     redirect();
-  }, [shortUrl]);
+  }, [urlPath]);
 
   if (error) {
     return <NotFound />;

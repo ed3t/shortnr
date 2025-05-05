@@ -9,7 +9,7 @@ export interface UrlDatabase {
 }
 
 export interface ShortenedUrl {
-  shortUrl: string;
+  shortUrlPath: string;
   longUrl: string;
   createdAt: Date;
   visits: number;

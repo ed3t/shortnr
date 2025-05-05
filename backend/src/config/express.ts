@@ -3,6 +3,7 @@ import encodeRoute from '@app/routes/encode';
 import decodeRoute from '@app/routes/decode';
 import statsRoute from '@app/routes/statistic';
 import listRoute from '@app/routes/list';
+import redirectRoute from '@app/routes/redirect';
 import rateLimit from 'express-rate-limit';
 import cors from 'cors';
 import { config } from '@config/config';
@@ -14,6 +15,8 @@ const createServer = (): Application => {
   const corsOptions = {
     origin: ["http://localhost:5173"],
     credentials: true,
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   };
 
   const limiter = rateLimit({
@@ -33,10 +36,7 @@ const createServer = (): Application => {
   app.use('/api/decode', decodeRoute);
   app.use('/api/statistic', statsRoute);
   app.use('/api/list', listRoute);
-
-  app.get('/api', (_req, res) => {
-    res.send('Running! 🚀');
-  });
+  app.use('/:urlPath', redirectRoute);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   app.use((err: AppError, _req: Request, res: Response, _next: NextFunction) => {

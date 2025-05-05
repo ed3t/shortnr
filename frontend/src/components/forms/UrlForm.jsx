@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 
 import successAnimation from "@app/assets/lotties/confetti";
 import { parseApiError } from "@utils/parseError";
-import { encodeUrl } from "@utils/api";
+import { apiEncode } from "@utils/api";
 import CopyIcon from "@components/icons/CopyIcon";
 
 const defaultLottieOptions = {
@@ -32,7 +32,7 @@ const UrlForm = () => {
 
       setIsLoading(true);
       try {
-        const { data } = await encodeUrl(inputValue);
+        const data = await apiEncode(inputValue);
         setResult(data);
         setInputValue("");
       } catch (err) {

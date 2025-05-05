@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function ListItem({ urlObject }) {
-  const link = `${import.meta.env.VITE_FRONTEND_URL}/${urlObject?.shortUrl}`;
+  const shortUrl = `${import.meta.env.VITE_FRONTEND_URL}/${urlObject?.shortUrlPath}`;
+
   const formattedDate = new Date(urlObject?.createdAt).toLocaleDateString(
     undefined,
     {
@@ -20,10 +21,10 @@ export default function ListItem({ urlObject }) {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href={link}
+            href={shortUrl}
             className="light-text link"
           >
-            {link}
+            {shortUrl}
           </a>
         </span>
       </div>

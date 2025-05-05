@@ -18,14 +18,15 @@ router.post('/', (req: Request, res: Response, next: NextFunction) => {
   let normalizedUrl: string;
   try {
     normalizedUrl = validateUrl(longUrl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return next(createError(400, error.message));
   }
 
-  const shortUrl = encodeUrl(normalizedUrl);
-  saveUrl(normalizedUrl, shortUrl);
+  const urlPath = encodeUrl(normalizedUrl);
+  saveUrl(normalizedUrl, urlPath);
 
-  const response: EncodeResponse = { longUrl: normalizedUrl, shortUrl: `${config.frontendDomain}/${shortUrl}` };
+  const response: EncodeResponse = { longUrl: normalizedUrl, shortUrl: `${config.frontendDomain}/${urlPath}` };
 
   return res.json(response);
 });

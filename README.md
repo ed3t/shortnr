@@ -20,7 +20,7 @@ This project provides both a **web interface** and an **API** for shortening URL
 2. [API Endpoints](#api-endpoints)
 
    * [POST /api/encode](#post-apiencode)
-   * [GET /api/decode/\:shortUrl](#get-apidecodeshorturl)
+   * [POST /api/decode](#post-apidecodeshorturl)
    * [GET /api/statistic/{shortUrl}](#get-apistatisticshorturl)
    * [GET /api/list](#get-apilist)
    * [GET /{shortUrl}](#get-shorturl)
@@ -33,12 +33,12 @@ This project provides both a **web interface** and an **API** for shortening URL
 
 ### 1. **Running the Backend (Node.js with TypeScript)**
 
-#### **Prerequisites**:
+#### **Prerequisites**
 
 * **Node.js** (version 20.x or higher)
 * **Yarn** (package manager)
 
-#### **Steps to run**:
+#### **Steps to run**
 
 1. **Clone the repository**:
 
@@ -92,12 +92,12 @@ This project provides both a **web interface** and an **API** for shortening URL
 
 ### 2. **Running the Frontend (React with Vite)**
 
-#### **Prerequisites**:
+#### **Prerequisites**
 
 * **Node.js** (version 14.x or higher)
 * **Yarn** (package manager)
 
-#### **Steps to run**:
+#### **Steps to run**
 
 1. **Navigate to the frontend directory**:
 
@@ -150,8 +150,8 @@ The frontend is built using **React** and **Vite** for fast development and bund
 * **`src/`**: Contains all the React components and assets.
 
   * **`src/api/`**: Contains the API client to interact with the backend (`api.js`).
-  * **`src/components/`**: Contains reusable components like `UrlForm`, `List`, `DataTable`, etc.
-  * **`src/pages/`**: Contains the page-level components like `Home`, `RedirectToLongUrl`, etc.
+  * **`src/components/`**: Contains reusable components like `UrlForm`, `Redirect`, `DataTable`, etc.
+  * **`src/pages/`**: Contains the page-level components like `Home`, `List`, etc.
 
 **Vite** is used as the development server and build tool, providing a fast development experience with hot reloading.
 
@@ -163,11 +163,11 @@ The backend exposes the following API endpoints:
 
 ### **POST** `/api/encode`
 
-#### **Description**:
+#### **Description**
 
 Encodes a long URL into a short URL.
 
-#### **Request Body**:
+#### **Request Body**
 
 ```json
 {
@@ -175,7 +175,7 @@ Encodes a long URL into a short URL.
 }
 ```
 
-#### **Response Body**:
+#### **Response Body**
 
 ```json
 {
@@ -184,7 +184,7 @@ Encodes a long URL into a short URL.
 }
 ```
 
-#### **Example cURL**:
+#### **Example cURL**
 
 ```bash
 curl -X POST http://localhost:5000/api/encode \
@@ -194,13 +194,13 @@ curl -X POST http://localhost:5000/api/encode \
 
 ---
 
-### **GET** `/api/decode/:shortUrl`
+### **POST** `/api/decode`
 
-#### **Description**:
+#### **Description**
 
 Decodes a short URL into the original long URL.
 
-#### **Response Body**:
+#### **Response Body**
 
 ```json
 {
@@ -208,21 +208,23 @@ Decodes a short URL into the original long URL.
 }
 ```
 
-#### **Example cURL**:
+#### **Example cURL**
 
 ```bash
-curl http://localhost:5000/api/decode/abc123
+curl -X POST http://localhost:5000/api/decode \
+  -H "Content-Type: application/json" \
+  -d '{"urlPath": "abc123"}'
 ```
 
 ---
 
-### **GET** `/api/statistic/{shortUrl}`
+### **GET** `/api/statistic/{urlPath}`
 
-#### **Description**:
+#### **Description**
 
 Returns statistics for a shortened URL.
 
-#### **Response Body**:
+#### **Response Body**
 
 ```json
 {
@@ -234,7 +236,7 @@ Returns statistics for a shortened URL.
 }
 ```
 
-#### **Example cURL**:
+#### **Example cURL**
 
 ```bash
 curl http://localhost:5000/api/statistic/abc123
@@ -244,11 +246,11 @@ curl http://localhost:5000/api/statistic/abc123
 
 ### **GET** `/api/list`
 
-#### **Description**:
+#### **Description**
 
 Lists all created URLs.
 
-#### **Response Body**:
+#### **Response Body**
 
 ```json
 [
@@ -267,7 +269,7 @@ Lists all created URLs.
 ]
 ```
 
-#### **Example cURL**:
+#### **Example cURL**
 
 ```bash
 curl http://localhost:5000/api/list
@@ -275,13 +277,13 @@ curl http://localhost:5000/api/list
 
 ---
 
-### **GET** `/{shortUrl}`
+### **GET** `/{urlPath}`
 
-#### **Description**:
+#### **Description**
 
 Redirects the user to the original long URL for a given short URL.
 
-#### **Example**:
+#### **Example**
 
 If the short URL is `http://localhost:5000/abc123`, a GET request will redirect to `https://example.com`.
 
@@ -339,13 +341,13 @@ export default UrlForm;
 
 ### **Backend Tests (Jest)**
 
-#### **Prerequisites**:
+#### **Prerequisites**
 
 * **Node.js** (version 20.x or higher)
 * **Yarn** (package manager)
 * **Jest** for running tests
 
-#### **Steps to run tests**:
+#### **Steps to run tests**
 
 1. **Install dependencies**:
 

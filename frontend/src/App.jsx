@@ -23,7 +23,7 @@ const AppContainer = (props) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index {...props} />} />
-          <Route path="/:shortUrl" element={<Redirect />} />
+          <Route path="/:urlPath" element={<Redirect />} />
           <Route path="/urls" element={<List />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

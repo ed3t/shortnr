@@ -13,15 +13,15 @@ const generateShortUrl = (): string => {
 };
 
 export const encodeUrl = (longUrl: string): string => {
-  const shortUrl = generateShortUrl();
+  const shortUrlPath = generateShortUrl();
   // Save the long URL to the in-memory bd
-  saveUrl(longUrl, shortUrl);
-  return shortUrl;
+  saveUrl(longUrl, shortUrlPath);
+  return shortUrlPath;
 };
 
 export const listUrls = (): ShortenedUrl[] => {
-  return Object.entries(urlDatabase).map(([shortUrl, { longUrl, createdAt, visits }]) => ({
-    shortUrl,
+  return Object.entries(urlDatabase).map(([shortUrlPath, { longUrl, createdAt, visits }]) => ({
+    shortUrlPath,
     longUrl,
     createdAt,
     visits

@@ -1,17 +1,65 @@
-import axios from 'axios';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-const API = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
-});
+/**
+ * Low-level helper for all API calls.
+ * @param {string} path  – your endpoint, e.g. '/api/encode'
+ * @param {object} opts  – fetch init (method, headers, body, etc)
+ */
+async function request(path, opts = {}) {
+  const url = `${BASE_URL}${path}`;
+  const init = {
+    headers: {
+      'Content-Type': 'application/json',
+      ...opts.headers,
+    },
+    ...opts,
+  };
+  if (opts.body && typeof opts.body !== 'string') {
+    init.body = JSON.stringify(opts.body);
+  }
 
-export const encodeUrl = (longUrl) =>
-  API.post('/encode', { longUrl });
+  const res = await fetch(url, init);
+  let data;
+  try {
+    data = await res.json();
+  } catch {
+    data = null;
+  }
+  if (!res.ok) {
+    const msg = data?.message || res.statusText;
+    throw new Error(msg);
+  }
+  return data;
+}
 
-export const decodeUrl = (shortUrl) =>
-  API.get(`/decode/${shortUrl}`);
 
-export const listUrls = () =>
-  API.get(`/list`);
+/** POST /api/encode */
+export function apiEncode(longUrl) {
+  return request('/encode', {
+    method: 'POST',
+    body: { longUrl },
+  });
+}
 
-export const statistic = (shortUrl) =>
-  API.get(`/statistic/${shortUrl}`);
+/** Get /api/decode/:path */
+export function apiDecode(urlPath) {
+  return request('/decode', {
+    method: 'POST',
+    body: { urlPath },
+  });
+}
+
+/** GET /api/statistic/:path */
+export function apiStats(code) {
+  return request(`/statistic/${encodeURIComponent(code)}`);
+}
+
+/** GET /api/list */
+export function apiList() {
+  return request('/list');
+}
+
+/** GET /:urlPath (Redirect URL) */
+export function apiRedirect(urlPath) {
+  return request(`/${encodeURIComponent(urlPath)}`);
+}

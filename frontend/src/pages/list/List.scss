@@ -161,6 +161,10 @@ $text-light: #7f7f7f;
     width: 70%;
 }
 
+.long-url.is-list {
+    width: 18rem;
+}
+
 @media (max-width: 767px) {
     .flex-list-wrapper {
         .control.has-icon {
@@ -200,5 +204,8 @@ $text-light: #7f7f7f;
         >div {
             border: none !important;
         }
+    }
+    .long-url.is-list {
+        width: unset;
     }
 }

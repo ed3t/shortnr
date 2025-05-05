@@ -29,5 +29,5 @@ export const validateUrl = (raw: string) => {
     }
   }
 
-  return parsed.origin;
+  return parsed.href;
 };

@@ -33,7 +33,7 @@ The **backend** of the URL shortener is built using **Node.js** with **TypeScrip
    Create a `.env` file in the root directory, and set up the following variables:
 
    ```env
-   VITE_BACKEND_URL=http://localhost:5000
+   VITE_API_URL=http://localhost:5000/api
    FRONTEND_URL=http://localhost:3000
    ```
 

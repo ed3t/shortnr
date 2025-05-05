@@ -96,7 +96,7 @@ const DataTable = ({
 
       <div className="flex-table margin-bottom large">
         <div className={`flex-table-header ${loading ? "is-disabled" : ""}`}>
-          <span onClick={() => handleSort("longUrl")} className="cursor-pointer">
+          <span onClick={() => handleSort("longUrl")} className="cursor-pointer is-grow">
             Long URL{" "}
             {sortColumn === "longUrl" &&
               (sortDirection === "asc" ? "↑" : "↓")}
@@ -111,7 +111,7 @@ const DataTable = ({
           </span>
           <span
             onClick={() => handleSort("visits")}
-            className="cursor-pointer is-grow"
+            className="cursor-pointer"
           >
             Visits{" "}
             {sortColumn === "visits" &&

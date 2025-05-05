@@ -267,8 +267,8 @@
       pointer-events: none;
   
       &::after {
-        position: absolute;
-        top: calc(50% - 0.5em);
+        position: relative;
+        top: calc(0% - 0.5em);
         left: calc(50% - 0.5em);
         content: "";
         display: block;

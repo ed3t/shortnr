@@ -4,7 +4,7 @@ dotenv.config();
 
 export const config = {
   host: process.env.HOST ?? 'localhost',
-  port: process.env.PORT ?? '9002',
+  port: process.env.PORT ?? '5000',
   environment: process.env.NODE_ENV ?? 'local',
   frontendUrl: process.env.FRONTEND_URL,
   frontendDomain: process.env.FRONTEND_DOMAIN,

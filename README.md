@@ -60,7 +60,7 @@ This project provides both a **web interface** and an **API** for shortening URL
    Create a `.env` file in the root directory, and set up the following variables:
 
    ```env
-   VITE_BACKEND_URL=http://localhost:5000
+   VITE_API_URL=http://localhost:5000/api
    FRONTEND_URL=http://localhost:5173
    ```
 

@@ -11,6 +11,12 @@ export default function ListItem({ urlObject }) {
       day: "numeric",
     }
   );
+
+  const formattedTime = new Date(urlObject?.createdAt).toLocaleTimeString(undefined, {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <div className="flex-table-item is-order">
       <div className="flex-table-cell" data-th="Long Url">
@@ -32,7 +38,7 @@ export default function ListItem({ urlObject }) {
         <span className="light-text">{urlObject?.visits}</span>
       </div>
       <div className="flex-table-cell cell-end" data-th="Created">
-        <span className="light-text">{formattedDate}</span>
+        <span className="light-text">{`${formattedDate}, ${formattedTime}`}</span>
       </div>
     </div>
   );

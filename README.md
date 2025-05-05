@@ -135,7 +135,7 @@ The backend is written in **TypeScript** and follows a modular structure. Below 
 * **`src/models/`**: Includes the database models and data interactions for storing and retrieving URLs.
 * **`src/routes/`**: Contains the API routes and Express middleware.
 * **`src/utils/`**: Utility functions such as URL validation and error handling.
-* **`src/server.ts`**: The entry point for the Node.js application.
+* **`src/index.ts`**: The entry point for the Node.js application.
 
 The backend uses **Express.js** for routing and API handling, **TypeORM** or **Mongoose** (depending on your choice) for the database, and **TypeScript** for type safety.
 

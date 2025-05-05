@@ -30,8 +30,8 @@ describe('POST /api/encode', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.shortUrl).toMatch(new RegExp(shortUrlPattern));
-    expect(response.body.longUrl).toBe('https://edet.dev');
-    expect(saveUrl).toHaveBeenCalledWith('https://edet.dev', expect.any(String));
+    expect(response.body.longUrl).toBe(longUrl);
+    expect(saveUrl).toHaveBeenCalledWith(longUrl, expect.any(String));
   });
 
   it('should return 404 if urlPath does not exist', async () => {

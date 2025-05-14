@@ -438,11 +438,11 @@ input {
     top: -156px;
     content: "";
     display: block;
-    left: 106px;
+    left: -40px;
     width: 410px;
     height: 410px;
     border-radius: 50%;
-    background: radial-gradient(50% 50% at 50% 50%, #c4bcdc 0%, #fff 100%);
+    background: radial-gradient(50% 50% at 50% 50%, rgb(1 242 58 / 14%) 0%, #fff 100%);
     z-index: -1;
   }
 

@@ -3,7 +3,7 @@ import "./Home.scss";
 
 const Home = (props) => {
   return (
-    <>
+    <div className="page">
       <div className="section index">
         <div className="text-container center">
           {props.environment == "local" && (
@@ -27,7 +27,7 @@ const Home = (props) => {
         </div>
         <Form />
       </div>
-    </>
+    </div>
   );
 };
 
